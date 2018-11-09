@@ -1,0 +1,47 @@
+{
+  "name": "lab19",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "test-watch": "jest --watchAll",
+    "test": "jest",
+    "lint": "eslint **/*.js",
+    "debug": "node --inspect index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenCarrigan/Image-Upload.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenCarrigan/Image-Upload/issues"
+  },
+  "homepage": "https://github.com/JenCarrigan/Image-Upload#readme",
+  "dependencies": {
+    "aws-sdk": "^2.351.0",
+    "babel-env": "^2.4.1",
+    "babel-eslint": "^10.0.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^3.0.2",
+    "cors": "^2.8.5",
+    "debug": "^4.1.0",
+    "dotenv": "^6.1.0",
+    "eslint": "^5.8.0",
+    "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
+    "http-errors": "^1.7.1",
+    "jest": "^23.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongodb-memory-server": "^2.7.0",
+    "mongoose": "^5.3.10",
+    "multer": "^1.4.1",
+    "require-dir": "^1.1.0",
+    "supertest": "^3.3.0"
+  }
+}
