@@ -10,34 +10,34 @@ const uploadFile = (filepath, key) => {
     ACL: 'public-read',
     Body: fs.createReadStream(filepath),
   };
-  console.log('CONFIG IS',config);
 
   return s3.upload(config)
     .promise()
     .then(result => {
-      console.log('FILEPATH', filepath);
       fs.remove(filepath, err => {
-        if (err) {
-          return console.error(err);
-        }
-        console.log('LOCATION', result.Location);
-        return result.Location;
-      })
-        // .then(() => {
-        //   console.log("LOCATION", result.Location);
-        //   return result.Location});
+        if (err) { return console.error(err); }
+      });
+      return result.Location;
     })
     .catch(err => {
-      console.error(err);
       return fs.remove(filepath)
         .then(() => Promise.reject(err));
     });
 };
 
-// fs.remove('/home/jprichardson', err => {
-//   if (err) return console.error(err)
+const deleteFile = (key) => {
+  let config = {
+    Bucket: process.env.AWS_BUCKET,
+    Key: key,
+  };
 
-//   console.log('success!') // I just deleted my entire HOME directory.
-// })
+  return s3.deleteObject(config)
+    .promise()
+    .then(result => {
+      return ('Your file has been deleted');
+    })
+    .catch(err => console.log(err, err.stack));
 
-export default { uploadFile };
+};
+
+export default { uploadFile, deleteFile };
