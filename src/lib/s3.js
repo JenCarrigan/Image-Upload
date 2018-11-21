@@ -37,7 +37,6 @@ const deleteFile = (key) => {
       return ('Your file has been deleted');
     })
     .catch(err => console.log(err, err.stack));
-
 };
 
 export default { uploadFile, deleteFile };

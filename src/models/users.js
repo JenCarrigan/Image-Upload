@@ -29,7 +29,6 @@ userSchema.methods.can = function (capability) {
   return capabilities[this.role].includes(capability);
 };
 
-
 userSchema.statics.authenticateBasic = function (auth) {
   let query = { username: auth.username };
   return this.findOne(query)

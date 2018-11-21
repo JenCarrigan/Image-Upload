@@ -4,7 +4,6 @@ export default (capability) => {
 
   //*
   return (req, res, next) => {
-
     try {
       let [authType, authString] = req.headers.authorization.split(/\s+/);
 
