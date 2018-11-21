@@ -17,7 +17,6 @@ uploadRouter.post('/upload', auth(), uploader.any(), async (req, res) => {
 
   let file = req.files[0];
   let key = `${file.filename}:${file.originalname}`;
-
   let url = await s3.uploadFile(file.path, key);
   let output = { url: url, key: key };
   let updatedUser = await user.findByIdAndUpdate(req.user._id, { $push: {images: output} }, {new: true});
@@ -25,7 +24,6 @@ uploadRouter.post('/upload', auth(), uploader.any(), async (req, res) => {
 });
 
 uploadRouter.delete('/delete-image/:imageid', auth(), async (req,res) => {
-
   let getImageUser = await user.findById(req.user._id);
 
   // Find the image by ID and get that object so we can send the key to s3 delete

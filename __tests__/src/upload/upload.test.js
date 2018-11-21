@@ -35,7 +35,6 @@ describe('/upload route', () => {
     let response = await mockRequest.post('/signup').send(userInfo);
     const token = response.text;
     response = await mockRequest.post('/signin').auth(token, {type:'bearer'});
-
     let pic = await mockRequest.post('/upload').auth(token, {type:'bearer'}).attach('img', `${__dirname}/asset/ohlawd.jpg`);
     expect(pic.status).toBe(200);
   });
@@ -49,7 +48,6 @@ describe('/upload route', () => {
     let response = await mockRequest.post('/signup').send(userInfo);
     const token = response.text;
     response = await mockRequest.post('/signin').auth(token, {type:'bearer'});
-    
     let pic = await mockRequest.post('/upload').auth(token, {type:'bearer'}).attach('img', `${__dirname}/asset/ohlawd.jpg`);
     let obj = JSON.parse(pic.text);
     let deleted = await mockRequest.delete(`/delete-image/${obj.images[0]._id}`).auth(token, {type:'bearer'});
